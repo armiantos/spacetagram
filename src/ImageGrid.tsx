@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import CardActions from '@mui/material/CardActions';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 export interface Image {
