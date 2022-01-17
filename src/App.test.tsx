@@ -1,35 +1,36 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import axios from 'axios';
-
-import App from './App';
+import LinearProgress from '@mui/material/LinearProgress';
 import { act } from 'react-dom/test-utils';
 import { shallow } from 'enzyme';
-import LinearProgress from '@mui/material/LinearProgress';
 
-jest.mock('axios');
-const mockedAxios = jest.mocked(axios, true);
+import App from './App';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { mockRootState } from './test_constants';
+import { fetchApod } from './redux/thunks/browse/fetchApod';
+
+jest.mock('./redux/hooks');
+export const mockUseAppDispatch = jest.mocked(useAppDispatch, true);
+export const mockUseAppSelector = jest.mocked(useAppSelector, true);
+
+const mockDispatch = jest.fn();
+
+jest.mock('./redux/thunks/browse/fetchApod');
+export const mockFetchApod = jest.mocked(fetchApod, true);
 
 beforeEach(() => {
-    mockedAxios.get.mockResolvedValue({
-        data: [],
-    });
+    mockUseAppDispatch.mockReturnValue(mockDispatch);
+    mockUseAppSelector.mockImplementation((selector) =>
+        selector(mockRootState)
+    );
 });
 
 test("it fetches NASA's APOD API", () => {
-    const expected_endpoint = 'https://api.nasa.gov/planetary/apod';
-    const expected_params = {
-        count: 20,
-        api_key: process.env.REACT_APP_NASA_API_KEY,
-    };
-
     act(() => {
         render(<App />);
     });
 
-    expect(mockedAxios.get).toBeCalledWith(expected_endpoint, {
-        params: expected_params,
-    });
+    expect(mockDispatch).toBeCalledWith(fetchApod());
 });
 
 test('initially renders a loading screen', () => {
