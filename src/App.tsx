@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Page } from '@shopify/polaris';
+import { Frame, Loading, Page } from '@shopify/polaris';
 import { ImageGrid } from './ImageGrid';
 
 export interface ApodResponse {
@@ -34,7 +34,11 @@ function App() {
         })();
     }, []);
 
-    let content = <p>Loading</p>;
+    let content = (
+        <Frame>
+            <Loading />
+        </Frame>
+    );
 
     if (!isLoading) {
         const mappedImages = apods.map((apod) => ({
