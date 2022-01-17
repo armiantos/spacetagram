@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
+import { Frame, Loading, Page } from '@shopify/polaris';
+import { ImageGrid } from './ImageGrid';
 
 export interface ApodResponse {
     copyright: string;
@@ -33,18 +34,30 @@ function App() {
         })();
     }, []);
 
-    if (isLoading) {
-        return <div>Loading</div>;
+    let content = (
+        <Frame>
+            <Loading />
+        </Frame>
+    );
+
+    if (!isLoading) {
+        const mappedImages = apods.map((apod) => ({
+            title: apod.title,
+            url: apod.url,
+            alt: apod.title,
+            description: apod.explanation,
+            date: apod.date,
+        }));
+        content = <ImageGrid images={mappedImages} />;
     }
 
     return (
-        <div>
-            {apods
-                .filter((apod) => apod.media_type === 'image')
-                .map((apod) => (
-                    <img key={apod.url} alt={apod.title} src={apod.url} />
-                ))}
-        </div>
+        <Page
+            title="spacestagram"
+            subtitle="Brought to you by NASA's image API"
+        >
+            {content}
+        </Page>
     );
 }
 
