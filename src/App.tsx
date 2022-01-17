@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ImageGrid } from './ImageGrid';
 import LinearProgress from '@mui/material/LinearProgress';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+
+import { ImageGrid } from './ImageGrid';
 import { Heading } from './Heading';
+import { theme } from './theme';
 
 export interface ApodResponse {
     copyright: string;
@@ -52,7 +53,9 @@ function App() {
         <>
             {loading}
             <Heading />
-            <Container maxWidth="lg">{content}</Container>
+            <Container maxWidth="xl" sx={{ marginTop: theme.spacing(12) }}>
+                {content}
+            </Container>
         </>
     );
 }
