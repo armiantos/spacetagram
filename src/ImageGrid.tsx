@@ -25,7 +25,7 @@ function ellipsis(text: string, num_words: number) {
     const split_text = text.split(' ');
     const suffix = split_text.length > num_words ? '...' : '';
     const display_text = split_text.slice(0, num_words).join(' ');
-    return display_text + suffix;
+    return [display_text, suffix].join(' ');
 }
 
 export function ImageGrid(props: ImageGridProps) {
