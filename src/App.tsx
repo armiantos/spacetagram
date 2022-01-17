@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Frame, Loading, Page } from '@shopify/polaris';
+import LinearProgress from '@mui/material/LinearProgress';
+import Container from '@mui/material/Container';
+
 import { ImageGrid } from './ImageGrid';
+import { Heading } from './Heading';
+import { theme } from './theme';
 
 export interface ApodResponse {
     copyright: string;
@@ -34,30 +38,25 @@ function App() {
         })();
     }, []);
 
-    let content = (
-        <Frame>
-            <Loading />
-        </Frame>
-    );
+    const loading = isLoading ? <LinearProgress /> : null;
 
-    if (!isLoading) {
-        const mappedImages = apods.map((apod) => ({
-            title: apod.title,
-            url: apod.url,
-            alt: apod.title,
-            description: apod.explanation,
-            date: apod.date,
-        }));
-        content = <ImageGrid images={mappedImages} />;
-    }
+    const mappedImages = apods.map((apod) => ({
+        title: apod.title,
+        url: apod.url,
+        alt: apod.title,
+        description: apod.explanation,
+        date: apod.date,
+    }));
+    const content = <ImageGrid images={mappedImages} />;
 
     return (
-        <Page
-            title="spacestagram"
-            subtitle="Brought to you by NASA's image API"
-        >
-            {content}
-        </Page>
+        <>
+            {loading}
+            <Heading />
+            <Container maxWidth="xl" sx={{ marginTop: theme.spacing(12) }}>
+                {content}
+            </Container>
+        </>
     );
 }
 

@@ -1,5 +1,14 @@
 import React from 'react';
-import { Layout, MediaCard } from '@shopify/polaris';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import Stack from '@mui/material/Stack';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
+import CardActions from '@mui/material/CardActions';
+import Grid from '@mui/material/Grid';
 
 export interface Image {
     title: string;
@@ -33,40 +42,38 @@ function splitToColumns(items: Image[], num_columns: number) {
 
 export function ImageGrid(props: ImageGridProps) {
     const COLUMNS_PER_PAGE = 3;
+    const MAX_COLUMNS = 12;
 
     const columns = splitToColumns(props.images, COLUMNS_PER_PAGE);
 
     return (
-        <Layout>
+        <Grid container spacing={2}>
             {columns.map((column, index) => (
-                <Layout.Section oneThird key={index}>
-                    {column.map((image) => (
-                        <MediaCard
-                            title={image.title}
-                            description={image.date}
-                            key={image.url}
-                            portrait
-                            primaryAction={{
-                                content: 'Like',
-                                onAction: () => {
-                                    // TODO
-                                },
-                            }}
-                        >
-                            <img
-                                alt={image.title}
-                                width="100%"
-                                height="100%"
-                                style={{
-                                    objectFit: 'cover',
-                                    objectPosition: 'center',
-                                }}
-                                src={image.url}
-                            />
-                        </MediaCard>
-                    ))}
-                </Layout.Section>
+                <Grid item key={index} xs={MAX_COLUMNS / COLUMNS_PER_PAGE}>
+                    <Stack spacing={3}>
+                        {column.map((image) => (
+                            <Card title={image.title} key={image.url}>
+                                <CardHeader title={image.title} />
+                                <CardMedia
+                                    component="img"
+                                    image={image.url}
+                                    alt={image.title}
+                                />
+                                <CardContent>
+                                    <Typography variant="body2">
+                                        {image.date}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <IconButton aria-label="like photo">
+                                        <FavoriteIcon />
+                                    </IconButton>
+                                </CardActions>
+                            </Card>
+                        ))}
+                    </Stack>
+                </Grid>
             ))}
-        </Layout>
+        </Grid>
     );
 }
