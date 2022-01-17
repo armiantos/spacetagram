@@ -10,13 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CardActions from '@mui/material/CardActions';
 import Grid from '@mui/material/Grid';
 
-export interface Image {
-    title: string;
-    url: string;
-    alt: string;
-    description: string;
-    date: string;
-}
+import { Image } from './data/Image';
 
 export interface ImageGridProps {
     images: Image[];

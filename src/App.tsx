@@ -6,20 +6,10 @@ import Container from '@mui/material/Container';
 import { ImageGrid } from './ImageGrid';
 import { Heading } from './Heading';
 import { theme } from './theme';
-
-export interface ApodResponse {
-    copyright: string;
-    date: string;
-    explanation: string;
-    hdurl: string;
-    media_type: string;
-    service_version: string;
-    title: string;
-    url: string;
-}
+import { Image } from './data/Image';
 
 function App() {
-    const [apods, setApods] = useState<ApodResponse[]>([]);
+    const [apods, setApods] = useState<Image[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -27,7 +17,7 @@ function App() {
             const APOD_ENDPOINT = 'https://api.nasa.gov/planetary/apod';
             const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
             setIsLoading(true);
-            const response = await axios.get<ApodResponse[]>(APOD_ENDPOINT, {
+            const response = await axios.get<Image[]>(APOD_ENDPOINT, {
                 params: {
                     count: 20,
                     api_key: NASA_API_KEY,
@@ -40,14 +30,7 @@ function App() {
 
     const loading = isLoading ? <LinearProgress /> : null;
 
-    const mappedImages = apods.map((apod) => ({
-        title: apod.title,
-        url: apod.url,
-        alt: apod.title,
-        description: apod.explanation,
-        date: apod.date,
-    }));
-    const content = <ImageGrid images={mappedImages} />;
+    const content = <ImageGrid images={apods} />;
 
     return (
         <>
