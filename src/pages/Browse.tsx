@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 
-import { ImageGrid } from '../ImageGrid';
+import { ImageGrid } from '../shared_components/ImageGrid';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { fetchApod } from '../redux/thunks/browse/fetchApod';
 import { Loading } from '../shared_components/Loading';

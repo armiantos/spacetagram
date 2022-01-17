@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Heading } from './Heading';
+import { Heading } from './shared_components/Heading';
 import { Browse } from './pages/Browse';
 import { theme } from './theme';
 
