@@ -57,7 +57,6 @@ export function ImageGrid(props: ImageGridProps) {
                                 <CardHeader title={image.title} />
                                 <CardMedia
                                     component="img"
-                                    height="194"
                                     image={image.url}
                                     alt={image.title}
                                 />
