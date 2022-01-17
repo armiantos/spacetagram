@@ -4,6 +4,7 @@ import { ImageGrid } from './ImageGrid';
 import LinearProgress from '@mui/material/LinearProgress';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { Heading } from './Heading';
 
 export interface ApodResponse {
     copyright: string;
@@ -36,9 +37,7 @@ function App() {
         })();
     }, []);
 
-    if (isLoading) {
-        return <LinearProgress />;
-    }
+    const loading = isLoading ? <LinearProgress /> : null;
 
     const mappedImages = apods.map((apod) => ({
         title: apod.title,
@@ -50,13 +49,11 @@ function App() {
     const content = <ImageGrid images={mappedImages} />;
 
     return (
-        <Container maxWidth="lg">
-            <Typography variant="h1">spacetagram</Typography>
-            <Typography variant="subtitle1">
-                Brought to you by NASA&apos;s image api
-            </Typography>
-            {content}
-        </Container>
+        <>
+            {loading}
+            <Heading />
+            <Container maxWidth="lg">{content}</Container>
+        </>
     );
 }
 
