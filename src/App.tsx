@@ -51,7 +51,14 @@ function App() {
         content = <ImageGrid images={mappedImages} />;
     }
 
-    return <Page title="spacestagram">{content}</Page>;
+    return (
+        <Page
+            title="spacestagram"
+            subtitle="Brought to you by NASA's image API"
+        >
+            {content}
+        </Page>
+    );
 }
 
 export default App;
