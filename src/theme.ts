@@ -5,5 +5,6 @@ export const theme = createTheme({
     palette: {
         primary: indigo,
         secondary: orange,
+        mode: 'dark',
     },
 });
