@@ -21,8 +21,16 @@ function splitToColumns(items: Image[], num_columns: number) {
     }, columns);
 }
 
+function ellipsis(text: string, num_words: number) {
+    const split_text = text.split(' ');
+    const suffix = split_text.length > num_words ? '...' : '';
+    const display_text = split_text.slice(0, num_words).join(' ');
+    return display_text + suffix;
+}
+
 export function ImageGrid(props: ImageGridProps) {
     const COLUMNS_PER_PAGE = 3;
+    const MAX_WORDS_IN_DESCRIPTION = 20;
 
     const columns = splitToColumns(props.images, COLUMNS_PER_PAGE);
 
@@ -33,7 +41,10 @@ export function ImageGrid(props: ImageGridProps) {
                     {column.map((image) => (
                         <MediaCard
                             title={image.title}
-                            description="Discover how Shopify can power up your entrepreneurial journey."
+                            description={ellipsis(
+                                image.description || '',
+                                MAX_WORDS_IN_DESCRIPTION
+                            )}
                             key={image.url}
                             portrait
                         >
