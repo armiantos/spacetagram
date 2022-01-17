@@ -14,6 +14,7 @@ export interface ImageGridProps {
 }
 
 function splitToColumns(items: Image[], num_columns: number) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const columns = [...Array(num_columns)].map((_) => []);
     return items.reduce<Image[][]>((acc, image, index) => {
         const target_array = index % num_columns;
@@ -22,12 +23,13 @@ function splitToColumns(items: Image[], num_columns: number) {
     }, columns);
 }
 
-function ellipsis(text: string, num_words: number) {
-    const split_text = text.split(' ');
-    const suffix = split_text.length > num_words ? '...' : '';
-    const display_text = split_text.slice(0, num_words).join(' ');
-    return [display_text, suffix].join(' ');
-}
+// TODO: Use later to display short description
+// function ellipsis(text: string, num_words: number) {
+//     const split_text = text.split(' ');
+//     const suffix = split_text.length > num_words ? '...' : '';
+//     const display_text = split_text.slice(0, num_words).join(' ');
+//     return [display_text, suffix].join(' ');
+// }
 
 export function ImageGrid(props: ImageGridProps) {
     const COLUMNS_PER_PAGE = 3;
