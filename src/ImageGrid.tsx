@@ -5,7 +5,8 @@ export interface Image {
     title: string;
     url: string;
     alt: string;
-    description?: string;
+    description: string;
+    date: string;
 }
 
 export interface ImageGridProps {
@@ -30,7 +31,6 @@ function ellipsis(text: string, num_words: number) {
 
 export function ImageGrid(props: ImageGridProps) {
     const COLUMNS_PER_PAGE = 3;
-    const MAX_WORDS_IN_DESCRIPTION = 20;
 
     const columns = splitToColumns(props.images, COLUMNS_PER_PAGE);
 
@@ -41,12 +41,15 @@ export function ImageGrid(props: ImageGridProps) {
                     {column.map((image) => (
                         <MediaCard
                             title={image.title}
-                            description={ellipsis(
-                                image.description || '',
-                                MAX_WORDS_IN_DESCRIPTION
-                            )}
+                            description={image.date}
                             key={image.url}
                             portrait
+                            primaryAction={{
+                                content: 'Like',
+                                onAction: () => {
+                                    // TODO
+                                },
+                            }}
                         >
                             <img
                                 alt={image.title}

@@ -42,6 +42,7 @@ function App() {
             url: apod.url,
             alt: apod.title,
             description: apod.explanation,
+            date: apod.date,
         }));
         content = <ImageGrid images={mappedImages} />;
     }
