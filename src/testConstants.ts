@@ -9,4 +9,8 @@ export const mockRootState: RootState = {
         images: [],
     },
     focus: {},
+    _persist: {
+        version: 1,
+        rehydrated: false,
+    },
 };
