@@ -40,6 +40,9 @@ export function Browse() {
                     variant="contained"
                     ref={ref}
                     loading={isLoading}
+                    onClick={() => {
+                        dispatch(fetchApod());
+                    }}
                 >
                     Load more
                 </LoadingButton>
