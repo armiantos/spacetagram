@@ -7,7 +7,7 @@ import { act } from 'react-dom/test-utils';
 import App from './App';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { fetchApod } from './redux/thunks/browse/fetchApod';
-import { mockRootState } from './test_constants';
+import { mockRootState } from './testConstants';
 
 jest.mock('./redux/hooks');
 export const mockUseAppDispatch = jest.mocked(useAppDispatch, true);
