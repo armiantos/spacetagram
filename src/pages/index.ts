@@ -1,2 +1,2 @@
-export { Browse } from './browse';
+export { Explore } from './explore';
 export { Favorites } from './favorites';

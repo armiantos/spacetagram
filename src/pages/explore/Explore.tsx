@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchApod } from '../../redux/thunks/browse/fetchApod';
 import { theme } from '../../theme';
 
-export function Browse() {
+export function Explore() {
     const dispatch = useAppDispatch();
     const apods = useAppSelector((state) => state.browse.images);
     const isLoading = useAppSelector((state) => state.browse.isLoading);
@@ -52,7 +52,7 @@ export function Browse() {
     return (
         <>
             <Typography variant="h3" component="h1" gutterBottom>
-                Browse
+                Explore
             </Typography>
             {loading}
             <MediaGrid images={apods} />

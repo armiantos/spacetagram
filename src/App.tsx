@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { FocusedModal } from './components/FocusedModal';
 import { Heading } from './components/Heading';
-import { Browse, Favorites } from './pages';
+import { Explore, Favorites } from './pages';
 import { theme } from './theme';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             <Container maxWidth="xl" sx={{ marginTop: theme.spacing(12) }}>
                 <Routes>
                     <Route path="/favorites" element={<Favorites />} />
-                    <Route path="/" element={<Browse />} />
+                    <Route path="/" element={<Explore />} />
                 </Routes>
             </Container>
         </BrowserRouter>
