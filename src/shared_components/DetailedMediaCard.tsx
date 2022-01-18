@@ -11,28 +11,23 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { pink } from '@mui/material/colors';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
-import CardActionArea from '@mui/material/CardActionArea';
-import { focusSlice } from '../redux/slices/focusSlice';
 
-const MAX_WORDS_IN_DESCRIPTION = 30;
-
-export interface ImageCardProps {
-    image: Image;
-}
-
-function ellipsis(text: string, num_words: number) {
-    const split_text = text.split(' ');
-    const suffix = split_text.length > num_words ? '...' : '';
-    const display_text = split_text.slice(0, num_words).join(' ');
-    return [display_text, suffix].join(' ');
+export interface DetailedMediaCardProps {
+    image?: Image;
 }
 
 function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.includes(image);
 }
 
-export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
+export const DetailedMediaCard: React.FC<DetailedMediaCardProps> = (
+    props: DetailedMediaCardProps
+) => {
     const { image } = props;
+    if (image === undefined) {
+        return <></>;
+    }
+
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
 
@@ -41,29 +36,16 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
         favoriteIcon = <FavoriteIcon sx={{ color: pink[500] }} />;
     }
 
-    const imageDescription = ellipsis(
-        image.explanation,
-        MAX_WORDS_IN_DESCRIPTION
-    );
-
     return (
         <Card title={image.title} key={image.url}>
-            <CardActionArea
-                onClick={() => dispatch(focusSlice.actions.focus(image))}
-            >
-                <CardHeader title={image.title} />
-                <CardMedia
-                    component="img"
-                    image={image.url}
-                    alt={image.title}
-                />
-                <CardContent>
-                    <Typography variant="body1" gutterBottom>
-                        {image.date}
-                    </Typography>
-                    <Typography variant="body2">{imageDescription}</Typography>
-                </CardContent>
-            </CardActionArea>
+            <CardHeader title={image.title} />
+            <CardMedia component="img" image={image.hdurl} alt={image.title} />
+            <CardContent>
+                <Typography variant="body1" gutterBottom>
+                    {image.date}
+                </Typography>
+                <Typography variant="body2">{image.explanation}</Typography>
+            </CardContent>
             <CardActions>
                 <IconButton
                     aria-label="like photo"

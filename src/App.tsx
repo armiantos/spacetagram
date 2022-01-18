@@ -6,11 +6,13 @@ import { Heading } from './shared_components/Heading';
 import { Browse } from './pages/Browse';
 import { theme } from './theme';
 import { Favorites } from './pages/Favorites';
+import { FocusedModal } from './shared_components/FocusedModal';
 
 function App() {
     return (
         <BrowserRouter>
             <Heading />
+            <FocusedModal />
             <Container maxWidth="xl" sx={{ marginTop: theme.spacing(12) }}>
                 <Routes>
                     <Route path="/favorites" element={<Favorites />} />
