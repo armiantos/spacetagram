@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { Image } from '../../data/Image';
-import { fetchApod } from '../thunks/browse/fetchApod';
+import { fetchApod } from '../thunks/explore/fetchApod';
 
-export type BrowseState = {
+export type ExploreState = {
     images: Image[];
     isLoading: boolean;
     errorMessage?: string;
 };
 
-const initialState: BrowseState = {
+const initialState: ExploreState = {
     images: [],
     isLoading: false,
 };
 
-export const browseSlice = createSlice({
-    name: 'browse',
+export const exploreSlice = createSlice({
+    name: 'explore',
     initialState,
     reducers: {},
     extraReducers: (builder) => {

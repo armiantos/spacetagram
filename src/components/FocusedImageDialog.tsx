@@ -20,7 +20,7 @@ function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.some((likedImage) => likedImage.url === image.url);
 }
 
-export function FocusedModal() {
+export function FocusedImageDialog() {
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
     const focusedImage = useAppSelector((state) => state.focus.image);
@@ -47,13 +47,7 @@ export function FocusedModal() {
     );
 
     return (
-        <Dialog
-            onClose={handleClose}
-            open={open}
-            maxWidth="md"
-            scroll="body"
-            fullScreen={fullScreen}
-        >
+        <Dialog onClose={handleClose} open={open} maxWidth="md" scroll="body" fullScreen={fullScreen}>
             <DialogTitle>
                 <Box
                     sx={{
@@ -62,22 +56,14 @@ export function FocusedModal() {
                         alignItems: 'center',
                     }}
                 >
-                    <Typography
-                        variant="h6"
-                        component="h2"
-                        sx={{ flexGrow: 1 }}
-                    >
+                    <Typography variant="h6" component="h2" sx={{ flexGrow: 1 }}>
                         {focusedImage.title}
                     </Typography>
                     {closeIcon}
                 </Box>
             </DialogTitle>
             <Box sx={{ overflowY: 'auto' }}>
-                <img
-                    src={focusedImage.url}
-                    alt={focusedImage.title}
-                    width="100%"
-                />
+                <img src={focusedImage.url} alt={focusedImage.title} width="100%" />
                 <Box
                     sx={{
                         padding: theme.spacing(2),
@@ -86,20 +72,14 @@ export function FocusedModal() {
                     <Typography variant="body1" gutterBottom>
                         {focusedImage.date}
                     </Typography>
-                    <Typography variant="body2">
-                        {focusedImage.explanation}
-                    </Typography>
+                    <Typography variant="body2">{focusedImage.explanation}</Typography>
                 </Box>
             </Box>
             <DialogActions>
                 <IconButton
                     aria-label="like photo"
                     onClick={() => {
-                        dispatch(
-                            likedImagesSlice.actions.toggleLikePhoto(
-                                focusedImage
-                            )
-                        );
+                        dispatch(likedImagesSlice.actions.toggleLikePhoto(focusedImage));
                     }}
                 >
                     {favoriteIcon}

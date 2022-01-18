@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils';
 
 import App from './App';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { fetchApod } from './redux/thunks/browse/fetchApod';
+import { fetchApod } from './redux/thunks/explore/fetchApod';
 import { mockRootState } from './testConstants';
 
 jest.mock('./redux/hooks');
@@ -15,14 +15,12 @@ export const mockUseAppSelector = jest.mocked(useAppSelector, true);
 
 const mockDispatch = jest.fn();
 
-jest.mock('./redux/thunks/browse/fetchApod');
+jest.mock('./redux/thunks/explore/fetchApod');
 export const mockFetchApod = jest.mocked(fetchApod, true);
 
 beforeEach(() => {
     mockUseAppDispatch.mockReturnValue(mockDispatch);
-    mockUseAppSelector.mockImplementation((selector) =>
-        selector(mockRootState)
-    );
+    mockUseAppSelector.mockImplementation((selector) => selector(mockRootState));
 });
 
 test("it fetches NASA's APOD API", () => {
