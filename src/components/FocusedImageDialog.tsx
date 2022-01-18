@@ -20,7 +20,7 @@ function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.some((likedImage) => likedImage.url === image.url);
 }
 
-export function FocusedModal() {
+export function FocusedImageDialog() {
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
     const focusedImage = useAppSelector((state) => state.focus.image);
