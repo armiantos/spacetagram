@@ -17,7 +17,7 @@ import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 import { theme } from '../theme';
 
 function isLiked(image: Image, likedImages: Image[]) {
-    return likedImages.includes(image);
+    return likedImages.some((likedImage) => likedImage.url === image.url);
 }
 
 export function FocusedModal() {

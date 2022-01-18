@@ -24,7 +24,7 @@ export const browseSlice = createSlice({
         });
         builder.addCase(fetchApod.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.images = action.payload;
+            state.images = [...state.images, ...action.payload];
         });
         builder.addCase(fetchApod.rejected, (state, action) => {
             state.isLoading = false;

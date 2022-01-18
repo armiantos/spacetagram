@@ -21,7 +21,7 @@ export interface ImageCardProps {
 }
 
 function isLiked(image: Image, likedImages: Image[]) {
-    return likedImages.includes(image);
+    return likedImages.some((likedImage) => likedImage.url === image.url);
 }
 
 export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {

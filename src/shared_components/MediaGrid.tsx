@@ -30,6 +30,10 @@ export function MediaGrid(props: ImageGridProps) {
         column_count = 3;
     }
 
+    if (props.images.length === 0) {
+        return null;
+    }
+
     const columns = splitToColumns(props.images, column_count);
 
     return (
