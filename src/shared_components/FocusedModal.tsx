@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
 import { pink } from '@mui/material/colors';
@@ -6,6 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 
 import { Image } from '../data/Image';
@@ -22,6 +24,7 @@ export function FocusedModal() {
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
     const focusedImage = useAppSelector((state) => state.focus.image);
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const open = focusedImage !== undefined;
     const handleClose = () => {
@@ -37,9 +40,38 @@ export function FocusedModal() {
         favoriteIcon = <FavoriteIcon sx={{ color: pink[500] }} />;
     }
 
+    const closeIcon = (
+        <IconButton aria-label="close" onClick={handleClose}>
+            <CloseIcon />
+        </IconButton>
+    );
+
     return (
-        <Dialog onClose={handleClose} open={open} maxWidth="md" scroll="body">
-            <DialogTitle>{focusedImage.title}</DialogTitle>
+        <Dialog
+            onClose={handleClose}
+            open={open}
+            maxWidth="md"
+            scroll="body"
+            fullScreen={fullScreen}
+        >
+            <DialogTitle>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Typography
+                        variant="h6"
+                        component="h2"
+                        sx={{ flexGrow: 1 }}
+                    >
+                        {focusedImage.title}
+                    </Typography>
+                    {closeIcon}
+                </Box>
+            </DialogTitle>
             <Box sx={{ overflowY: 'auto' }}>
                 <img
                     src={focusedImage.url}
