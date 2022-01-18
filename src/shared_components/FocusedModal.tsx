@@ -1,18 +1,17 @@
-import React from 'react';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import DialogContent from '@mui/material/DialogContent';
+import Box from '@mui/material/Box';
+import { pink } from '@mui/material/colors';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import React from 'react';
+
+import { Image } from '../data/Image';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { focusSlice } from '../redux/slices/focusSlice';
-import { pink } from '@mui/material/colors';
 import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
-import { Image } from '../data/Image';
 import { theme } from '../theme';
 
 function isLiked(image: Image, likedImages: Image[]) {

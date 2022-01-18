@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { Image } from '../../data/Image';
 import { fetchApod } from '../thunks/browse/fetchApod';
 

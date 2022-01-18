@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './App';
+import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import { theme } from './theme';
-import { store } from './redux/store';
 
 ReactDOM.render(
     <React.StrictMode>

@@ -1,12 +1,12 @@
-import React from 'react';
 import Container from '@mui/material/Container';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Heading } from './shared_components/Heading';
 import { Browse } from './pages/Browse';
-import { theme } from './theme';
 import { Favorites } from './pages/Favorites';
 import { FocusedModal } from './shared_components/FocusedModal';
+import { Heading } from './shared_components/Heading';
+import { theme } from './theme';
 
 function App() {
     return (

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Image } from '../../data/Image';
 
 export type LikedImagesState = {

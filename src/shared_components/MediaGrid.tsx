@@ -1,11 +1,11 @@
-import React from 'react';
-import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import React from 'react';
 
 import { Image } from '../data/Image';
-import { MediaCard } from './MediaCard';
 import { theme } from '../theme';
+import { MediaCard } from './MediaCard';
 
 export interface ImageGridProps {
     images: Image[];

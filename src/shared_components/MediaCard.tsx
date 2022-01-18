@@ -1,19 +1,20 @@
-import React from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Image } from '../data/Image';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { pink } from '@mui/material/colors';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
-import CardActionArea from '@mui/material/CardActionArea';
-import { focusSlice } from '../redux/slices/focusSlice';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
+import React from 'react';
+
+import { Image } from '../data/Image';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { focusSlice } from '../redux/slices/focusSlice';
+import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 
 export interface ImageCardProps {
     image: Image;

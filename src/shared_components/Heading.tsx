@@ -1,11 +1,11 @@
+import ExploreIcon from '@mui/icons-material/Explore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import ExploreIcon from '@mui/icons-material/Explore';
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export function Heading() {
     return (
