@@ -9,7 +9,9 @@ export function Favorites() {
 
     return (
         <>
-            <Typography variant="h1">Favorites</Typography>
+            <Typography variant="h3" component="h1" gutterBottom>
+                Favorites
+            </Typography>
             <MediaGrid images={apods} />
         </>
     );

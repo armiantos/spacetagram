@@ -19,7 +19,9 @@ export function Browse() {
 
     return (
         <>
-            <Typography variant="h1">Browse</Typography>
+            <Typography variant="h3" component="h1" gutterBottom>
+                Browse
+            </Typography>
             {loading}
             <MediaGrid images={apods} />
         </>

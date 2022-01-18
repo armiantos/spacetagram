@@ -1,31 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import ExploreIcon from '@mui/icons-material/Explore';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export function Heading() {
     return (
-        <Container maxWidth="xl" component="header">
-            <Typography variant="h1">spacetagram</Typography>
-            <Typography variant="subtitle1">
-                Brought to you by NASA&apos;s image api
-            </Typography>
-
-            <nav>
-                <ul>
-                    <li>
-                        <Link component={RouterLink} to="/">
-                            Browse
-                        </Link>
-                    </li>
-                    <li>
-                        <Link component={RouterLink} to="/favorites">
-                            Favorites
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-        </Container>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    spacetagram
+                </Typography>
+                <nav>
+                    <ul
+                        style={{ listStyleType: 'none', margin: 0, padding: 0 }}
+                    >
+                        <li style={{ float: 'left' }}>
+                            <IconButton component={Link} to="/">
+                                <ExploreIcon />
+                            </IconButton>
+                        </li>
+                        <li style={{ float: 'left' }}>
+                            <IconButton component={Link} to="/favorites">
+                                <FavoriteIcon />
+                            </IconButton>
+                        </li>
+                    </ul>
+                </nav>
+            </Toolbar>
+        </AppBar>
     );
 }
