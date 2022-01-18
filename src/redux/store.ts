@@ -18,6 +18,7 @@ import { likedImagesSlice } from './slices/likedImagesSlice';
 const persistConfig = {
     key: 'root',
     storage,
+    version: 1,
     whitelist: ['likedImages'],
 };
 
