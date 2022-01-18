@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 import CardActionArea from '@mui/material/CardActionArea';
 import { focusSlice } from '../redux/slices/focusSlice';
+import { makeStyles } from '@mui/styles';
 
 export interface ImageCardProps {
     image: Image;
@@ -23,6 +24,7 @@ function isLiked(image: Image, likedImages: Image[]) {
 }
 
 export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
+    const classes = useStyles();
     const { image } = props;
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
@@ -47,7 +49,10 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                     <Typography variant="body1" gutterBottom>
                         {image.date}
                     </Typography>
-                    <Typography variant="body2" noWrap>
+                    <Typography
+                        variant="body2"
+                        className={classes.overflowText}
+                    >
                         {image.explanation}
                     </Typography>
                 </CardContent>
@@ -68,3 +73,14 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
         </Card>
     );
 };
+
+// Ellipsis implementation taken from https://css-tricks.com/almanac/properties/l/line-clamp/
+const useStyles = makeStyles({
+    overflowText: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        '-webkit-line-clamp': 3,
+        '-webkit-box-orient': 'vertical',
+        display: '-webkit-box',
+    },
+});
