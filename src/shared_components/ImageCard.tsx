@@ -9,7 +9,7 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { pink } from '@mui/material/colors';
-import { useAppDispatch } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 
 export interface ImageCardProps {
@@ -24,9 +24,14 @@ export interface ImageCardProps {
 //     return [display_text, suffix].join(' ');
 // }
 
+function isLiked(image: Image, likedImages: Image[]) {
+    return likedImages.includes(image);
+}
+
 export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
     const { image } = props;
     const dispatch = useAppDispatch();
+    const likedImages = useAppSelector((state) => state.likedImages.images);
 
     return (
         <Card title={image.title} key={image.url}>
@@ -42,7 +47,11 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                         dispatch(likedImagesSlice.actions.likePhoto(image));
                     }}
                 >
-                    <FavoriteIcon sx={{ color: pink[500] }} />
+                    <FavoriteIcon
+                        sx={{
+                            color: isLiked(image, likedImages) ? pink[500] : '',
+                        }}
+                    />
                 </IconButton>
             </CardActions>
         </Card>
