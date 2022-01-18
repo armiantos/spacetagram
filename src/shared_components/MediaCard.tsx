@@ -14,17 +14,8 @@ import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 import CardActionArea from '@mui/material/CardActionArea';
 import { focusSlice } from '../redux/slices/focusSlice';
 
-const MAX_WORDS_IN_DESCRIPTION = 30;
-
 export interface ImageCardProps {
     image: Image;
-}
-
-function ellipsis(text: string, num_words: number) {
-    const split_text = text.split(' ');
-    const suffix = split_text.length > num_words ? '...' : '';
-    const display_text = split_text.slice(0, num_words).join(' ');
-    return [display_text, suffix].join(' ');
 }
 
 function isLiked(image: Image, likedImages: Image[]) {
@@ -41,11 +32,6 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
         favoriteIcon = <FavoriteIcon sx={{ color: pink[500] }} />;
     }
 
-    const imageDescription = ellipsis(
-        image.explanation,
-        MAX_WORDS_IN_DESCRIPTION
-    );
-
     return (
         <Card title={image.title} key={image.url}>
             <CardActionArea
@@ -61,7 +47,9 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                     <Typography variant="body1" gutterBottom>
                         {image.date}
                     </Typography>
-                    <Typography variant="body2">{imageDescription}</Typography>
+                    <Typography variant="body2" noWrap>
+                        {image.explanation}
+                    </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
@@ -72,6 +60,7 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                             likedImagesSlice.actions.toggleLikePhoto(image)
                         );
                     }}
+                    sx={{ marginLeft: 'auto' }}
                 >
                     {favoriteIcon}
                 </IconButton>
