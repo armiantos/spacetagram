@@ -14,9 +14,7 @@ export const fetchApod = createAsyncThunk('browse/fetchApod', async () => {
         },
     });
 
-    const images = response.data.filter(
-        (media) => media.media_type === 'image'
-    );
+    const images = response.data.filter((media) => media.media_type === 'image');
 
     return images;
 });

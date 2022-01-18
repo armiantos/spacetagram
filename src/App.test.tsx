@@ -20,9 +20,7 @@ export const mockFetchApod = jest.mocked(fetchApod, true);
 
 beforeEach(() => {
     mockUseAppDispatch.mockReturnValue(mockDispatch);
-    mockUseAppSelector.mockImplementation((selector) =>
-        selector(mockRootState)
-    );
+    mockUseAppSelector.mockImplementation((selector) => selector(mockRootState));
 });
 
 test("it fetches NASA's APOD API", () => {

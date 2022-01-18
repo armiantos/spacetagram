@@ -17,11 +17,7 @@ export function FavoritesEmptyState() {
                 alignItems: 'center',
             }}
         >
-            <img
-                src={UndrawStars}
-                alt="stars"
-                style={{ margin: theme.spacing(8), maxWidth: '100%' }}
-            />
+            <img src={UndrawStars} alt="stars" style={{ margin: theme.spacing(8), maxWidth: '100%' }} />
             <Typography variant="body1">
                 You haven&apos;t picked your favorites yet. Go visit{' '}
                 <Link component={RouterLink} to="/">

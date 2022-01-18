@@ -23,9 +23,7 @@ test('renders the 3 columns for large screens', () => {
 
     const result = shallow(<MediaGrid images={mockImages} />);
 
-    const columns = result.findWhere(
-        (wrapper) => wrapper.type() === Grid && wrapper.prop('item')
-    );
+    const columns = result.findWhere((wrapper) => wrapper.type() === Grid && wrapper.prop('item'));
     expect(columns).toHaveLength(3);
 });
 
@@ -34,9 +32,7 @@ test('renders the 2 columns for medium screens', () => {
 
     const result = shallow(<MediaGrid images={mockImages} />);
 
-    const columns = result.findWhere(
-        (wrapper) => wrapper.type() === Grid && wrapper.prop('item')
-    );
+    const columns = result.findWhere((wrapper) => wrapper.type() === Grid && wrapper.prop('item'));
     expect(columns).toHaveLength(2);
 });
 
@@ -45,8 +41,6 @@ test('renders the 1 column for small screens', () => {
 
     const result = shallow(<MediaGrid images={mockImages} />);
 
-    const columns = result.findWhere(
-        (wrapper) => wrapper.type() === Grid && wrapper.prop('item')
-    );
+    const columns = result.findWhere((wrapper) => wrapper.type() === Grid && wrapper.prop('item'));
     expect(columns).toHaveLength(1);
 });

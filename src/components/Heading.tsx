@@ -13,17 +13,11 @@ export function Heading() {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Link
-                    to="/"
-                    component={RouterLink}
-                    sx={{ height: '2.5rem', flexGrow: 1 }}
-                >
+                <Link to="/" component={RouterLink} sx={{ height: '2.5rem', flexGrow: 1 }}>
                     <img src={TextLogo} alt="spacetagram" height="100%" />
                 </Link>
                 <nav>
-                    <ul
-                        style={{ listStyleType: 'none', margin: 0, padding: 0 }}
-                    >
+                    <ul style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
                         <li style={{ float: 'left' }}>
                             <IconButton component={RouterLink} to="/">
                                 <ExploreIcon />

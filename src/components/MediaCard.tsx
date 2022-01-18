@@ -37,23 +37,14 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
 
     return (
         <Card title={image.title} key={image.url}>
-            <CardActionArea
-                onClick={() => dispatch(focusSlice.actions.focus(image))}
-            >
+            <CardActionArea onClick={() => dispatch(focusSlice.actions.focus(image))}>
                 <CardHeader title={image.title} />
-                <CardMedia
-                    component="img"
-                    image={image.url}
-                    alt={image.title}
-                />
+                <CardMedia component="img" image={image.url} alt={image.title} />
                 <CardContent>
                     <Typography variant="body1" gutterBottom>
                         {image.date}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        className={classes.overflowText}
-                    >
+                    <Typography variant="body2" className={classes.overflowText}>
                         {image.explanation}
                     </Typography>
                 </CardContent>
@@ -62,9 +53,7 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                 <IconButton
                     aria-label="like photo"
                     onClick={() => {
-                        dispatch(
-                            likedImagesSlice.actions.toggleLikePhoto(image)
-                        );
+                        dispatch(likedImagesSlice.actions.toggleLikePhoto(image));
                     }}
                     sx={{ marginLeft: 'auto' }}
                 >

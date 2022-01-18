@@ -16,9 +16,7 @@ export const likedImagesSlice = createSlice({
     reducers: {
         toggleLikePhoto: (state, action: PayloadAction<Image>) => {
             const imageToToggle = action.payload;
-            const indexOfImage = state.images.findIndex(
-                (likedImage) => likedImage.url === imageToToggle.url
-            );
+            const indexOfImage = state.images.findIndex((likedImage) => likedImage.url === imageToToggle.url);
 
             if (indexOfImage < 0) {
                 state.images.push(action.payload);
