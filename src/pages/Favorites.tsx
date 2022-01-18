@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 
-import { ImageGrid } from '../shared_components/ImageGrid';
+import { MediaGrid } from '../shared_components/MediaGrid';
 import { useAppSelector } from '../redux/hooks';
 
 export function Favorites() {
@@ -10,7 +10,7 @@ export function Favorites() {
     return (
         <>
             <Typography variant="h1">Favorites</Typography>
-            <ImageGrid images={apods} />
+            <MediaGrid images={apods} />
         </>
     );
 }

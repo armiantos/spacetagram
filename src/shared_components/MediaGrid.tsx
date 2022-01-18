@@ -19,7 +19,7 @@ function splitToColumns(items: Image[], num_columns: number) {
     }, columns);
 }
 
-export function ImageGrid(props: ImageGridProps) {
+export function MediaGrid(props: ImageGridProps) {
     const COLUMNS_PER_PAGE = 3;
     const MAX_COLUMNS = 12;
 
