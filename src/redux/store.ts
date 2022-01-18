@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
-import { browseSlice } from './slices/browseSlice';
+import { exploreSlice } from './slices/exploreSlice';
 import { focusSlice } from './slices/focusSlice';
 import { likedImagesSlice } from './slices/likedImagesSlice';
 
@@ -24,7 +24,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     likedImages: likedImagesSlice.reducer,
-    browse: browseSlice.reducer,
+    explore: exploreSlice.reducer,
     focus: focusSlice.reducer,
 });
 

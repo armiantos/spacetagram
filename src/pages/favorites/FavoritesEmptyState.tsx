@@ -25,7 +25,7 @@ export function FavoritesEmptyState() {
             <Typography variant="body1">
                 You haven&apos;t picked your favorites yet. Go visit{' '}
                 <Link component={RouterLink} to="/">
-                    browse
+                    explore
                 </Link>{' '}
                 to get some inspiration.
             </Typography>

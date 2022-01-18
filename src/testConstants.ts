@@ -2,7 +2,7 @@ import { Image } from './data/Image';
 import { RootState } from './redux/store';
 
 export const mockRootState: RootState = {
-    browse: {
+    explore: {
         images: [],
         isLoading: false,
     },

@@ -7,13 +7,13 @@ import { useInView } from 'react-intersection-observer';
 import { Loading } from '../../components/Loading';
 import { MediaGrid } from '../../components/MediaGrid';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { fetchApod } from '../../redux/thunks/browse/fetchApod';
+import { fetchApod } from '../../redux/thunks/explore/fetchApod';
 import { theme } from '../../theme';
 
 export function Explore() {
     const dispatch = useAppDispatch();
-    const apods = useAppSelector((state) => state.browse.images);
-    const isLoading = useAppSelector((state) => state.browse.isLoading);
+    const apods = useAppSelector((state) => state.explore.images);
+    const isLoading = useAppSelector((state) => state.explore.isLoading);
     const { ref, inView } = useInView();
 
     const loading = isLoading && apods.length === 0 ? <Loading /> : null;
