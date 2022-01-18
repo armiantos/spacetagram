@@ -8,6 +8,9 @@ import { Image } from '../data/Image';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { pink } from '@mui/material/colors';
+import { useAppDispatch } from '../redux/hooks';
+import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 
 export interface ImageCardProps {
     image: Image;
@@ -23,6 +26,7 @@ export interface ImageCardProps {
 
 export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
     const { image } = props;
+    const dispatch = useAppDispatch();
 
     return (
         <Card title={image.title} key={image.url}>
@@ -32,8 +36,13 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                 <Typography variant="body2">{image.date}</Typography>
             </CardContent>
             <CardActions>
-                <IconButton aria-label="like photo">
-                    <FavoriteIcon />
+                <IconButton
+                    aria-label="like photo"
+                    onClick={() => {
+                        dispatch(likedImagesSlice.actions.likePhoto(image));
+                    }}
+                >
+                    <FavoriteIcon sx={{ color: pink[500] }} />
                 </IconButton>
             </CardActions>
         </Card>

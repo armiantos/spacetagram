@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Image } from '../../data/Image';
 
 export type LikedImagesState = {
@@ -12,5 +12,9 @@ const initialState: LikedImagesState = {
 export const likedImagesSlice = createSlice({
     name: 'liked_images',
     initialState,
-    reducers: {},
+    reducers: {
+        likePhoto: (state, action: PayloadAction<Image>) => {
+            state.images.push(action.payload);
+        },
+    },
 });
