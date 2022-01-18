@@ -9,17 +9,15 @@ import { Favorites } from './pages/Favorites';
 
 function App() {
     return (
-        <>
+        <BrowserRouter>
             <Heading />
             <Container maxWidth="xl" sx={{ marginTop: theme.spacing(12) }}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/favorites" element={<Favorites />} />
-                        <Route path="/" element={<Browse />} />
-                    </Routes>
-                </BrowserRouter>
+                <Routes>
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="/" element={<Browse />} />
+                </Routes>
             </Container>
-        </>
+        </BrowserRouter>
     );
 }
 
