@@ -2,9 +2,9 @@ import Container from '@mui/material/Container';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import { FocusedModal } from './components/FocusedModal';
+import { Heading } from './components/Heading';
 import { Browse, Favorites } from './pages';
-import { FocusedModal } from './shared_components/FocusedModal';
-import { Heading } from './shared_components/Heading';
 import { theme } from './theme';
 
 function App() {

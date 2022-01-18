@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import { Loading } from '../../components/Loading';
+import { MediaGrid } from '../../components/MediaGrid';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchApod } from '../../redux/thunks/browse/fetchApod';
-import { Loading } from '../../shared_components/Loading';
-import { MediaGrid } from '../../shared_components/MediaGrid';
 import { theme } from '../../theme';
 
 export function Browse() {

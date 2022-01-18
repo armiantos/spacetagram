@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
+import { MediaGrid } from '../../components/MediaGrid';
 import { useAppSelector } from '../../redux/hooks';
-import { MediaGrid } from '../../shared_components/MediaGrid';
 import { FavoritesEmptyState } from './FavoritesEmptyState';
 
 export function Favorites() {
