@@ -8,4 +8,5 @@ export const mockRootState: RootState = {
     likedImages: {
         images: [],
     },
+    focus: {},
 };

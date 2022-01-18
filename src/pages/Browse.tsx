@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
+import React, { useEffect } from 'react';
 
-import { MediaGrid } from '../shared_components/MediaGrid';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { fetchApod } from '../redux/thunks/browse/fetchApod';
 import { Loading } from '../shared_components/Loading';
+import { MediaGrid } from '../shared_components/MediaGrid';
 
 export function Browse() {
     const dispatch = useAppDispatch();
@@ -19,7 +19,9 @@ export function Browse() {
 
     return (
         <>
-            <Typography variant="h1">Browse</Typography>
+            <Typography variant="h3" component="h1" gutterBottom>
+                Browse
+            </Typography>
             {loading}
             <MediaGrid images={apods} />
         </>

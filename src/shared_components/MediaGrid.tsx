@@ -1,8 +1,10 @@
-import React from 'react';
-import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import React from 'react';
 
 import { Image } from '../data/Image';
+import { theme } from '../theme';
 import { MediaCard } from './MediaCard';
 
 export interface ImageGridProps {
@@ -20,15 +22,20 @@ function splitToColumns(items: Image[], num_columns: number) {
 }
 
 export function MediaGrid(props: ImageGridProps) {
-    const COLUMNS_PER_PAGE = 3;
-    const MAX_COLUMNS = 12;
+    let column_count = 1;
+    if (useMediaQuery(theme.breakpoints.up('md'))) {
+        column_count = 2;
+    }
+    if (useMediaQuery(theme.breakpoints.up('lg'))) {
+        column_count = 3;
+    }
 
-    const columns = splitToColumns(props.images, COLUMNS_PER_PAGE);
+    const columns = splitToColumns(props.images, column_count);
 
     return (
         <Grid container spacing={2}>
             {columns.map((column, index) => (
-                <Grid item key={index} xs={MAX_COLUMNS / COLUMNS_PER_PAGE}>
+                <Grid item key={index} xs={12} md={6} lg={4}>
                     <Stack spacing={2}>
                         {column.map((image) => (
                             <MediaCard key={image.url} image={image} />
