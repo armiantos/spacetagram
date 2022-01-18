@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 
 import { Image } from '../data/Image';
-import { ImageCard } from './ImageCard';
+import { MediaCard } from './MediaCard';
 
 export interface ImageGridProps {
     images: Image[];
@@ -31,7 +31,7 @@ export function ImageGrid(props: ImageGridProps) {
                 <Grid item key={index} xs={MAX_COLUMNS / COLUMNS_PER_PAGE}>
                     <Stack spacing={2}>
                         {column.map((image) => (
-                            <ImageCard key={image.url} image={image} />
+                            <MediaCard key={image.url} image={image} />
                         ))}
                     </Stack>
                 </Grid>

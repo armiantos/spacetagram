@@ -28,7 +28,7 @@ function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.includes(image);
 }
 
-export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
+export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
     const { image } = props;
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
