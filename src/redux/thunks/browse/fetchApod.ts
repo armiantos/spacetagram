@@ -13,5 +13,10 @@ export const fetchApod = createAsyncThunk('browse/fetchApod', async () => {
             api_key: NASA_API_KEY,
         },
     });
-    return response.data;
+
+    const images = response.data.filter(
+        (media) => media.media_type === 'image'
+    );
+
+    return images;
 });
