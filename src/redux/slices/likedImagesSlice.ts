@@ -13,8 +13,18 @@ export const likedImagesSlice = createSlice({
     name: 'liked_images',
     initialState,
     reducers: {
-        likePhoto: (state, action: PayloadAction<Image>) => {
-            state.images.push(action.payload);
+        toggleLikePhoto: (state, action: PayloadAction<Image>) => {
+            const imageToToggle = action.payload;
+            const indexOfImage = state.images.findIndex(
+                (likedImage) => likedImage.url === imageToToggle.url
+            );
+
+            if (indexOfImage < 0) {
+                state.images.push(action.payload);
+                return;
+            }
+
+            state.images.splice(indexOfImage, 1);
         },
     },
 });

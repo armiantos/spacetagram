@@ -33,6 +33,11 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
     const dispatch = useAppDispatch();
     const likedImages = useAppSelector((state) => state.likedImages.images);
 
+    let favoriteIcon = <FavoriteIcon />;
+    if (isLiked(image, likedImages)) {
+        favoriteIcon = <FavoriteIcon sx={{ color: pink[500] }} />;
+    }
+
     return (
         <Card title={image.title} key={image.url}>
             <CardHeader title={image.title} />
@@ -44,14 +49,12 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
                 <IconButton
                     aria-label="like photo"
                     onClick={() => {
-                        dispatch(likedImagesSlice.actions.likePhoto(image));
+                        dispatch(
+                            likedImagesSlice.actions.toggleLikePhoto(image)
+                        );
                     }}
                 >
-                    <FavoriteIcon
-                        sx={{
-                            color: isLiked(image, likedImages) ? pink[500] : '',
-                        }}
-                    />
+                    {favoriteIcon}
                 </IconButton>
             </CardActions>
         </Card>
