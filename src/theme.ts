@@ -7,4 +7,7 @@ export const theme = createTheme({
         secondary: orange,
         mode: 'dark',
     },
+    typography: {
+        fontFamily: ['Outfit', 'sans-serif'].join(','),
+    },
 });
