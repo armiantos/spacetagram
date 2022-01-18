@@ -16,13 +16,12 @@ export interface ImageCardProps {
     image: Image;
 }
 
-// TODO: Use later to display short description
-// function ellipsis(text: string, num_words: number) {
-//     const split_text = text.split(' ');
-//     const suffix = split_text.length > num_words ? '...' : '';
-//     const display_text = split_text.slice(0, num_words).join(' ');
-//     return [display_text, suffix].join(' ');
-// }
+function ellipsis(text: string, num_words: number) {
+    const split_text = text.split(' ');
+    const suffix = split_text.length > num_words ? '...' : '';
+    const display_text = split_text.slice(0, num_words).join(' ');
+    return [display_text, suffix].join(' ');
+}
 
 function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.includes(image);
@@ -43,7 +42,12 @@ export const MediaCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
             <CardHeader title={image.title} />
             <CardMedia component="img" image={image.url} alt={image.title} />
             <CardContent>
-                <Typography variant="body2">{image.date}</Typography>
+                <Typography variant="body1" gutterBottom>
+                    {image.date}
+                </Typography>
+                <Typography variant="body2">
+                    {ellipsis(image.explanation, 30)}
+                </Typography>
             </CardContent>
             <CardActions>
                 <IconButton
