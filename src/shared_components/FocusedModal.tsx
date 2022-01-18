@@ -6,13 +6,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DialogContent from '@mui/material/DialogContent';
+import Typography from '@mui/material/Typography';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { focusSlice } from '../redux/slices/focusSlice';
 import { pink } from '@mui/material/colors';
 import { likedImagesSlice } from '../redux/slices/likedImagesSlice';
 import { Image } from '../data/Image';
-import DialogContent from '@mui/material/DialogContent';
-import Typography from '@mui/material/Typography';
+import { theme } from '../theme';
 
 function isLiked(image: Image, likedImages: Image[]) {
     return likedImages.includes(image);
@@ -38,17 +39,27 @@ export function FocusedModal() {
     }
 
     return (
-        <Dialog onClose={handleClose} open={open} maxWidth="md" scroll="paper">
+        <Dialog onClose={handleClose} open={open} maxWidth="md" scroll="body">
             <DialogTitle>{focusedImage.title}</DialogTitle>
-            <img src={focusedImage.url} alt={focusedImage.title} width="100%" />
-            <DialogContent>
-                <Typography variant="body1" gutterBottom>
-                    {focusedImage.date}
-                </Typography>
-                <Typography variant="body2">
-                    {focusedImage.explanation}
-                </Typography>
-            </DialogContent>
+            <Box sx={{ overflowY: 'auto' }}>
+                <img
+                    src={focusedImage.url}
+                    alt={focusedImage.title}
+                    width="100%"
+                />
+                <Box
+                    sx={{
+                        padding: theme.spacing(2),
+                    }}
+                >
+                    <Typography variant="body1" gutterBottom>
+                        {focusedImage.date}
+                    </Typography>
+                    <Typography variant="body2">
+                        {focusedImage.explanation}
+                    </Typography>
+                </Box>
+            </Box>
             <DialogActions>
                 <IconButton
                     aria-label="like photo"
